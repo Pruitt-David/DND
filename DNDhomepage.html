@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <title>Dungeon and Dragons Character Generator Homepage</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="java.js"></script>
+    </head>
+    <body>
+        <div id="h1Title">
+            <h1 class="h1Title">Dungeon and Dragons <br/>5th Edition Character Generator</h1>
+        </div>
+        <div class="names">
+            <h2>Name <input type="text">
+                <div class="tooltip"><img src="question.png">
+                    <span class="tooltiptext">Give your character a name.</span>
+                </div>
+                Race 
+                <select id="mySelectRace" onchange="SELECTRACE()">
+                    <option></option>
+                    <option name="dragonborn"  value="1">Dragonborn</option>
+                    <option name="dwarf"       value="2">Dwarf</option>
+                    <option name="elf"         value="3">Elf</option>
+                    <option name="gnome"       value="4">Gnome</option>
+                    <option name="halfelf"     value="5">Half-Elf</option>
+                    <option name="halfling"    value="6">Halfing</option>
+                    <option name="halforc"     value="7">Half-Orc</option>    
+                    <option name="human"       value="8">Human</option>
+                    <option name="Tiefling"    value="9">Tiefling</option> 
+                </select>
+                <div class="tooltip"><img src="question.png">
+                    <span class="tooltiptext">Certain Races have advantages over others, they determine your speed, and certain modifiers you gain on your abilities as well as languages.</span>
+                </div>  
+                Class 
+                <select id="mySelectClass" onchange="SELECTCLASS()">
+                    <option></option>
+                    <option name="barbarian" value="barbarian">Barbarian</option>
+                    <option name="bard"      value="bard">Bard</option>
+                    <option name="cleric"    value="cleric">Cleric</option>
+                    <option name="d10.png"     value="d10.png" number="10">Druid</option>
+                    <option name="fighter"   value="fighter">Fighter</option>
+                    <option name="monk"      value="monk">Monk</option>
+                    <option name="paladin"   value="paladin">Paladin</option>
+                    <option name="ranger"    value="ranger">Ranger</option>
+                    <option name="rogue"     value="rogue">Rogue</option>
+                    <option name="sorcerer"  value="sorcerer">Sorcerer</option>
+                    <option name="warlock"   value="warlock">Warlock</option>
+                    <option name="wizard"    value="wizard">Wizard</option>
+                </select>
+                <div class="tooltip"><img src="question.png">
+                    <span class="tooltiptext">Certain classes have advantages over others, they determine your hit die, your feats, and your proficiencies in certain skills.</span>
+                </div>  
+                Level
+                <select id="mySelectLevel" onchange="SELECTLEVEL()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>                    
+                </select>
+                <div class="tooltip"><img src="question.png">
+                    <span class="tooltiptext">Your level is a representation of how much experience your character has.</span>
+                </div>  
+                Alignment 
+                <select>
+                    <option name="lg" value="lg">Lawful Good</option>
+                    <option name="ln" value="ln">Lawful Neutral</option>
+                    <option name="le" value="le">Lawful Evil</option>
+                    <option name="ng" value="ng">Neutral Good</option>
+                    <option name="pn" value="pn">Pure Neutral</option>
+                    <option name="ne" value="ne">Neutral Evil</option>
+                    <option name="cg" value="cg">Chaotic Good</option>
+                    <option name="cn" value="cn">Chaotic Neutral</option>
+                    <option name="ce" value="ce">Chaotic Evil</option>
+                </select>
+                <div class="tooltip"><img src="question.png">
+                    <span class="tooltiptext">Your character's alignment is a representation of how good / evil your character is, as well as how lawful / chaotic they are.</span>
+                </div>  
+                  
+            </h2>
+        </div>        
+        <div id="Abilities" class="column">
+            <table>
+                <th>
+                    <h1>Abilities              
+                        <div class="tooltip">
+                            <img src="question.png">
+                            <span class="tooltiptext">Your abilities represent how effective your character is in certain things.</span>
+                        </div>
+                    </h1>
+                </th>
+            </table>
+            <table>        
+            
+                <tr>
+                    <th>Dice</th>
+                    <th>Type</th>
+                    <th>Score</th>
+                    <th></th>
+                    <th>Modifier</th>
+                    <th>Help</th>
+                </tr>
+                <tr>
+                    <td><button onclick="ChangeSTR()"><img src="diceIcon.png"></button></td>
+                    <td><p>Strength<br/>STR</p></td>
+                    <td>    
+                        <p id="STRSCORE">10</p>
+                    </td>
+                    <td>    
+                        <button onclick="STRUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <button onclick="STRDOWN()"><img class="arrow" src="redArrow.png"></button></td>
+                    
+                    <td><h2 id="STRMOD">0</h2></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Strength is a measure of how much a character can pick up, how hard they can hit something with a weapon, how fast they may climb up a rope, or how far they may jump or throw something.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="ChangeDEX()"><img src="diceIcon.png"></button></td>
+                    <td><p>Dexterity<br/>DEX</p></td>
+                    <td><p id="DEXSCORE">10</p></td>
+                    <td>
+                        <button onclick="DEXUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <button onclick="DEXDOWN()"><img class="arrow" src="redArrow.png"></button>
+                    </td>
+                    <td><h2 id="DEXMOD">0</h2></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Dexterity is a measure of how much finesse a character may have. How well they can perform a sleight of hand trick, how well they can sneak by others, and how well they may be able to hit a target from a distance.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="ChangeCON()"><img src="diceIcon.png"></button></td>
+                    <td><p>Constition<br/>CON</p></td>
+                    <td><p id="CONSCORE">10</p></td>
+                    <td>
+                        <button onclick="CONUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <button onclick="CONDOWN()"><img class="arrow" src="redArrow.png"></button>
+                    </td>
+                    <td><h2 id="CONMOD">0</h2></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Constitution is a measure of how much your character can endure before breaking.  This effect how much hit points your character has before dying, and how long can your character run without fatigue.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="ChangeINT()"><img src="diceIcon.png"></button></td>
+                    <td><p>Intelligence<br/>INT</p></td>
+                    <td><p id="INTSCORE">10</p></td>
+                    <td>
+                        <button onclick="INTUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <button onclick="INTDOWN()"><img class="arrow" src="redArrow.png"></button>
+                    </td>
+                    <td><h2 id="INTMOD">0</h2></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Intelligence is a measure of how book smart your character may be.  Usually recalling information from a book they read as a child or knowing what type of artifact they may have stumbled upon, or knowing if there is a trick to getting by something obstructing their way.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="ChangeWIS()"><img src="diceIcon.png"></button></td>
+                    <td><p>Wisdom<br/>WIS</p></td>
+                    <td><p id="WISSCORE">10</p></td>
+                    <td>
+                        <button onclick="WISUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <button onclick="WISDOWN()"><img class="arrow" src="redArrow.png"></button>
+                    </td>
+                    <td><h2 id="WISMOD">0</h2></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Wisdom is a measure of how street smart your character may be.  This generally deal how well you can interact with animals, or knowing if a mushroom is poisonous or not, or being aware of your surroundings.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="ChangeCHA()"><img src="diceIcon.png"></button></td>
+                    <td><p>Charisma<br/>CHA</p></td>
+                    <td><p id="CHASCORE">10</p></td>
+                    <td>
+                        <button onclick="CHAUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <button onclick="CHADOWN()"><img class="arrow" src="redArrow.png"></button>
+                    </td>
+                    <td><h2 id="CHAMOD">0</h2></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Charisma is a measure of how influential your character may be.  This generally deals with how well you may be able to lie to someone and they believe it as well as disguise yourself as someone else.</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table>
+                <th>
+                    <h1>Skills
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Skills are a representation on how well your characte can perform a certain task like swimming, lying, jumping, ect... The higher your skill the better you can perform these actions.  They are based off of your modifiers and if your proficient in that skill or not.</span>
+                        </div>
+                    </h1>
+                </th>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <h2>Choose <i class="bigger" id="PROFNUM">2</i> Proficiencies
+                            <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">Depending on your class you get to choose from certain skill proficiencies that give you an advantage when performing them</span>
+                            </div>
+                        </h2>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <ul class="choosePROF" id="SELECTSKILLS"></ul>
+                    </th>
+                </tr>
+            </table>
+            
+            <table>
+                <tr>
+                    <th>Proficient</th>
+                    <th>Modifier</th>
+                    <th>Name</th>
+                    <th>Help</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>STR</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onclick="ATH()" id="PROATH"></td>
+                    <td>
+                        <p id="ATHMOD">0</p>
+                    </td>
+                    <td>
+                        <p>Athletics</p>
+                    </td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can jump, climb, or swim.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>DEX</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="ACR()" id="PROACR"></td>
+                    <td><p id="ACRMOD">0</p></td>
+                    <td><p>Acrobatics</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can balance, tumble, or flip.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="SOH()" id="PROSOH"></td>
+                    <td><p id="SOHMOD">0</p></td>
+                    <td><p>Sleight of Hand</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can steal items, conceal items, or trick others.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="STE()" id="PROSTE"></td>
+                    <td><p id="STEMOD">0</p></td>
+                    <td><p>Stealth</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can hide, move silently, or not be perceived by others.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>INT</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="ARC()" id="PROARC"></td>
+                    <td><p id="ARCMOD">0</p></td>
+                    <td><p>Arcana</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well your can identify spells, or know magical properties in an item.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="HIS()" id="PROHIS"></td>
+                    <td><p id="HISMOD">0</p></td>
+                    <td><p>History</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can remember ancient lore about items, places, or families. </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="INV()" id="PROINV"></td>
+                    <td><p id="INVMOD">0</p></td>
+                    <td><p>Investigation</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can find clues and determine motives</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="NAT()" id="PRONAT"></td>
+                    <td><p id="NATMOD">0</p></td>
+                    <td><p>Nature</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can tell the natural about beasts, plants, or environments.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="REL()" id="PROREL"></td>
+                    <td><p id="RELMOD">0</p></td>
+                    <td><p>Religion</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can identify religions, know rituals, know offensives to a cult.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>WIS</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="ANH()" id="PROANH"></td>
+                    <td><p id="ANHMOD">0</p></td>
+                    <td><p>Animal Handling</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can tame, calm, or ride an animal.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="INS()" id="PROINS"></td>
+                    <td><p id="INSMOD">0</p></td>
+                    <td><p>Insight</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can detect lies and sense motives.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="MED()" id="PROMED"></td>
+                    <td><p id="MEDMOD">0</p></td>
+                    <td><p>Medicine</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can perform medicinal help to those in need; bandaging, nursing, or CPR.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="PER()" id="PROPER"></td>
+                    <td><p id="PERMOD">0</p></td>
+                    <td><p>Perception</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can see hidden doors, traps, or enemies. Also how well you can hear noises.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="SUR()" id="PROSUR"></td>
+                    <td><p id="SURMOD">0</p></td>
+                    <td><p>Survival</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can forage for food, make a fire, craft makeshift weapons.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>CHA</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="DEC()" id="PRODEC"></td>
+                    <td><p id="DECMOD">0</p></td>
+                    <td><p>Deception</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">This is a measure of how well your character can lie, fake crying, disguise emotions, and impersonate others.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="INTI()" id="PROINTI"></td>
+                    <td><p id="INTIMOD">0</p></td>
+                    <td><p>Intimidation</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">This is a measure of how well your character can torture someone, scaring others, or taunting someone to violence.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="PERF()" id="PROPERF"></td>
+                    <td><p id="PERFMOD">0</p></td>
+                    <td><p>Performance</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can perform an act, play an instrument, amuse a crowd.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="PERS()" id="PROPERS"></td>
+                    <td><p id="PERSMOD">0</p></td>
+                    <td><p>Persuasion</p></td>
+                    <td>
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">How well you can convince others to work for you, lower hostilities, make friends.</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="Stats" class="column">
+            <table>
+                <th>
+                    <h1>Stats              
+                        <div class="tooltip">
+                            <img src="question.png">
+                            <span class="tooltiptext">Your stats represent what kind of character your playing; quick or slow, hearty or frail, tanky or vulnerable</span>
+                        </div>
+                    </h1>
+                </th>
+            </table>
+                <table>
+                    <tr>
+                        <td>
+                            <h2>AC
+                                <div class="tooltip"><img src="question.png">
+                                    <span class="tooltiptext">Armor Class, how hard it is to hit your character. Determined by the armor you are wearing, and the dex modifier your character has. Certain armors do not use your dex mod.</span>
+                                </div>
+                            </h2>
+                            <p id="AC" class="imagerA" style="background-image:url('shield.jpg')"><br/>10</p>
+                        </td>
+                        <td>
+                            <h2>HP
+                                <div class="tooltip"><img src="question.png">
+                                    <span class="tooltiptext">Hit Points, how much damage your character can take before dying.  This is determined by level, hit die, and CON Modifier.</span>
+                                </div>
+                            </h2>
+                            <p id="HP" value="8" class="imagerB" style="background-image:url('heart.jpg')"><br/></p> 
+                        </td>
+                        <td>
+                            <h2>Speed
+                                <div class="tooltip"><img src="question.png">
+                                    <span class="tooltiptext">How fast your character can move in an standard action.  This is determined by your race.</span>
+                                </div>
+                            </h2>
+                            <p id="SPEED" value="30" class="imagerC" style="background-image:url('speed.jpg')"></p>
+                        </td>
+                    </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <h2>Initiative
+                            <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">How quickly your character reacts, determines turn order, based off of your DEX modifier.</span>
+                            </div>
+                        </h2>
+                        <h2 class="imagerE" id="INI" style="background-image:url('ini.png')"><br/>0</h2>
+                    </td>
+                    <td>
+                        <h2>Hit Die
+                            <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">The amount of health your character gains per level  + CON mod.</span>
+                            </div>
+                        </h2>
+                        <img class="imagerD" id="hitDieImage">
+                    </td>
+                </tr>                        
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <h2>Proficiency Bonus
+                            <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">Your proficiency bonus is determined by your level.  You add this bonus to your skill rolls to which you are proficient in.</span>
+                            </div>
+                        </h2>
+                        <h2 id="bonus">2</h2>
+                    </th>
+                </tr>
+                
+                
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <h2>Saving Throws <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">Your proficiency bonus is determined by your level.  You add this bonus to your skill rolls to which you are proficient in.  As well as your saving throws to which your character’s class determines for you.</span>
+                            </div></h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <ul id="SAVELIST"></ul>
+                    </th>
+                </tr>
+            </table>
+            
+            <br/>
+            <table>
+                <th>
+                    <h1>Equipment
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">What tools, weapons, armor, money, and other treasures your character may have on him when starting out.</span>
+                        </div>
+                    </h1>
+                </th>
+            </table>
+            <table>
+                <th>
+                    <h2>Weapon
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">
+                                Simple Weapons:<br/> Club-Sling<br/>
+                                Martial Weapons:<br/> Battleaxe-Net<br/>
+                                Your character will be able to use some better over others, check your feats for simple or martial feats. 
+                            </span>
+                        </div>
+                    </h2>
+                </th>
+                <tr>
+                    <th>
+                        <select id="SELECTWEAPON">
+                            <option></option>
+                            <option value="Club 1d4 bludgeoning ">Club</option>
+                            <option value="Dagger 1d4 piercing ">Dagger</option>
+                            <option value="Greatclub 1d8 bludgeoning ">Greatclub</option>
+                            <option value="HandAxe 1d6 slashing ">Handaxe</option>
+                            <option value="Javelin 1d6 piercing ">Javelin</option>
+                            <option value="Light Hammer 1d4 bludgeoning ">Light Hammer</option>
+                            <option value="Mace 1d6 bludgeoning ">Mace</option>
+                            <option value="Quarterstaff 1d6 bludgeoning ">Quarterstaff</option>
+                            <option value="Sickle 1d4 slashing ">Sickle</option>
+                            <option value="Spear 1d6 piercing ">Spear</option>
+                            <option value="Light Crossbow 1d8 piercing ">Light Crossbow</option>
+                            <option value="Dart 1d4 piercing ">Dart</option>
+                            <option value="Shortbow 1d6 piercing ">Shortbow</option>
+                            <option value="Sling 1d4 bludgeoning ">Sling</option>
+                            <option value="Battleaxe 1d8 slashing ">Battleaxe</option>
+                            <option value="Flail 1d8 bludgeoning ">Flail</option>
+                            <option value="Glaive 1d10 slashing ">Glaive</option>
+                            <option value="Greataxe 2d6 slashing ">Greataxe</option>
+                            <option value="Halberd 1d10 slashing ">Halberd</option>
+                            <option value="Lance 1d12 piercing ">Lance</option>
+                            <option value="Longsword 1d8 slashing ">Longsword</option>
+                            <option value="Maul 2d6 bludgeoning ">Maul</option>
+                            <option value="Morningstar 1d8 piercing ">Morningstar</option>
+                            <option value="Pike 1d10 piercing ">Pike</option>
+                            <option value="Rapier 1d8 piercing ">Rapier</option>
+                            <option value="Scimitar 1d6 slashing ">Scimitar</option>
+                            <option value="Shortsword 1d6 piercing ">Shortsword</option>
+                            <option value="Trident 1d6 piercing ">Trident</option>
+                            <option value="War Pick 1d8 piercing ">War pick</option>
+                            <option value="Warhammer 1d8 bludgeoning ">Warhammer</option>
+                            <option value="Whip 1d4 slashing ">Whip</option>
+                            <option value="Blowgun 1 piercing ">Blowgun</option>
+                            <option value="Hand Crossbow 1d6 piercing ">Hand Crossbow</option>
+                            <option value="Heavy Crossbow 1d10 piercing ">Heavy Crossbow</option>
+                            <option value="Longbow 1d8 piercing ">Longbow</option>
+                            <option value="Net ">Net</option>
+                        </select>
+                        <button class="buttonTxt" onclick="ADDWEAPON()">ADD</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <ul id="WEAPONLIST"></ul>
+                    </th>
+                </tr>
+            </table>
+        
+            <table>
+                <th>
+                    <h2>Armor
+                        <div class="tooltip">
+                            <img src="question.png">
+                            <span class="tooltiptext">You should choose Light armor (Padded, Leather, or Studded) if you have high Dexterity.  Medium Armor (Hide, Chain, Scale, Breastplate, or half plate) if you have average Dexterity. Heavy Armor (Ring, Chain, Splint, Plate) if your Dexterity is less than 10.</span>
+                        </div>
+                    </h2>
+                </th>
+                <tr>
+                    <th>
+                        <select id="SELECTARMOR" name="SELECTAC" onchange="SELECTARMOR()">
+                            <option></option>
+                            <option value="Padded Armor +1 AC + DEX " number="1" >Padded Armor</option>
+                            <option value="Leather Armor +1 AC + DEX ">Leather Armor</option>
+                            <option value="Studded Leather +2 AC + DEX ">Studded Leather</option>
+                            <option value="Hide Armor +2 AC + DEX (Max 2) ">Hide Armor</option>
+                            <option value="Chain Shirt +3 AC + DEX (Max 2) ">Chain Shirt</option>
+                            <option value="Scale Mail +4 AC + DEX (Max 2) ">Scale Mail</option>
+                            <option value="Breastplate +4 AC + DEX (Max 2) ">Breastplate</option>
+                            <option value="Half Plate +5 AC + DEX (Max 2) ">Half Plate</option>
+                            <option value="Ring Mail +4 AC ">Ring Mail</option>
+                            <option value="Chainmail +6 AC ">Chain Mail</option>
+                            <option value="Splint +7 AC ">Splint</option>
+                            <option value="Plate +8 AC ">Plate</option>
+                        </select>
+                        <button class="buttonTxt" onclick="ADDARMOR()">ADD</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <ul id="ARMORLIST"></ul>
+                    </th>    
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <h2>Money
+                        <div class="tooltip">
+                            <img src="question.png">
+                            <span class="tooltiptext">1 Platinum coin is worth 10 gold, or 100 silver, or 1000 copper.<br/>You should be able to stay at a poor inn for 1 silver piece.</span>
+                            </div>
+                        </h2>
+                    </th>   
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Platinum Coin</th>
+                    <th>Gold Coin</th>
+                    <th>Silver Coin</th>
+                    <th>Copper Coin</th>
+                </tr>
+                    <th class="coin"><img src="pCoin.png"><br/><input type="number"></th>
+                    <th class="coin"><img src="gCoin.png"><br/><input type="number" value="100"></th>
+                    <th class="coin"><img src="sCoin.png"><br/><input type="number"></th>
+                    <th class="coin"><img src="cCoin.png"><br/><input type="number"></th>
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <h2>Tools
+                            <div class="tooltip">
+                                <img src="question.png">
+                                <span class="tooltiptext">Any type of item your class would carry, such as lock picks, books, ink, ect...</span>
+                            </div>
+                        </h2>
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <input id="TOOL" type="text">
+                        <button class="buttonTxt" onclick="ADDTOOLS()">ADD</button>
+                
+                        <ul id="TOOLLIST"></ul>
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>
+                        <h2>Other Treasure
+                            <div class="tooltip">
+                                <img src="question.png">
+                                <span class="tooltiptext">Any other items you may be carrying.  This would include Rare stones, magic items, mounts, ect...</span>
+                            </div>
+                        </h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input id="MISC" type="text">
+                        <button class="buttonTxt" onclick="ADDMISC()">ADD</button>
+                        <ul id="MISCLIST"></ul>
+                    </th>
+            </table>
+        </div>
+        <div class="column">
+            <table>
+                <th>
+                    <h1>Background
+                        <div class="tooltip"><img src="question.png">
+                            <span class="tooltiptext">Your character's background is a representation of what your character has done with their life so far.</span>
+                        </div>
+                    </h1>
+                    <select>
+                        <option name="acolyte"            value="acolyte">Acolyte</option>
+                        <option name="charlatan"          value="charlatan">Charlatan</option>
+                        <option name="city_watch"         value="city_watch">City Watch</option>
+                        <option name="clan_crafter"       value="clan_crafter">Clan Crafter</option>
+                        <option name="cloistered_scholar" value="cloistered_scholar">Cloistered Scholar</option>
+                        <option name="courtier"           value="courtier">Courtier</option>
+                        <option name="criminal"           value="criminal">Criminal</option>
+                        <option name="entertainer"        value="entertainer">Entertainer</option>
+                        <option name="faction_agent"      value="faction_agent">Faction Agent</option>
+                        <option name="far_traveler"       value="far_traveler">Far Traveler</option>
+                        <option name="folk_hero"          value="folk_hero">Folk Hero</option>
+                        <option name="gladiator"          value="gladiator">Gladiator</option>
+                        <option name="guild_artisan"      value="guild_artisan">Guild Artisan</option>
+                        <option name="guild_merchant"     value="guild_merchant">Guild Merchant</option>
+                        <option name="huanted_one"        value="huanted_one">Huanted One</option>
+                        <option name="hermit"             value="hermit">Hermit</option>
+                        <option name="inheritor"          value="inheritor">Inheritor</option>
+                        <option name="investigator"       value="investigator">Investigator</option>
+                        <option name="knight"             value="knight">Knight</option>
+                        <option name="mercenary_veteran"  value="mercenary_veteran">Mercenary Veteran</option>
+                        <option name="noble"              value="noble">Noble</option>
+                        <option name="outlander"          value="outlander">Outlander</option>
+                        <option name="pirate"             value="pirate">Pirate</option>
+                        <option name="sage"               value="sage">Sage</option>
+                        <option name="sailor"             value="sailor">Sailor</option>
+                        <option name="soldier"            value="soldier">Soldier</option>
+                        <option name="spy"                value="spy">Spy</option>
+                        <option name="urban_bounty_hunter" value="urban_bounty_hunter">Urban Bounty     Hunter</option>
+                        <option name="urchin"             value="urchin">Urchin</option>
+                        <option name="custom"             value="custom">Custom</option>
+                    </select>
+                </th>
+            </table>
+               
+              
+            <table>
+                <tr>                        
+                    <th>
+                        Personality Trait
+                        <div class="tooltip">
+                            <img src="question.png">
+                            <span class="tooltiptext">Something interesting about your character, Things you like, dislike, fears, mannerisms, or past accomplishments.</span>
+                        </div>
+                    </th>
+                </tr>                    
+                <tr>
+                    <td>
+                        <textarea rows="4" placeholder="Give your character 2 personaility traits such as Past accomplishments, things your character dislikes or fears, mannerisms, or attitude. "></textarea>
+                    </td>
+                </tr>
+                <tr>                        
+                    <th>
+                        Ideals
+                        <div class="tooltip">
+                            <img src="question.png">
+                            <span class="tooltiptext">Something your character believes in fully, or will always do to protect their belief.</span>
+                        </div>
+                    </th>
+                </tr>                    
+                <th>
+                    <textarea rows="4" placeholder="Ideals can answer any of the following questions.  What are your principles you will never betray?  What would prompt you to make a sacrifice? What is the single most important thing you strive for?"></textarea>
+                </th>
+                <tr>
+                    <td>
+                        <p id="IDEALtxt"></p>
+                    </td>
+                </tr>
+                <tr>                        
+                    <th>
+                        Bonds<div class="tooltip">
+                        <img src="question.png">
+                        <span class="tooltiptext">Your connection to people, places, or things</span>
+                        </div>
+                    </th>
+                </tr>                    
+                <tr>
+                    <td>
+                        <textarea rows="4" placeholder="Bonds can answer any of the following questions. Whom do you care about most? Where do you feel a special connection? What is your most treasured item?"></textarea>
+                    </td>
+                </tr>
+                <tr>                        
+                    <th>
+                        Flaws<div class="tooltip">
+                        <img src="question.png">
+                        <span class="tooltiptext">Some Vice, or compulsion your character has.</span>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea rows="4" placeholder="Flaws can answer any of the following questions.  What enrages you? What is the one person, event, or concept you're terrified of?  What are your vices?"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table>
+                <tr>
+                    <th>
+                        <h1>Languages
+                            <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">Languages your character knows how to speak, read, and write.</span>
+                            </div>
+                        </h1>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        
+                        <select id="SELECTLANGUAGE">
+                            <option name="Abyssal ">Abyssal </option>
+                            <option name="Celestial ">Celestial </option>
+                            <option name="Deep Speech ">Deep Speech </option>
+                            <option name="Draconic ">Draconic </option>
+                            <option name="Dwarvish ">Dwarvish </option>
+                            <option name="Elvish ">Elvish </option>
+                            <option name="Giant ">Giant </option>
+                            <option name="Gnomish ">Gnomish </option>
+                            <option name="Goblin ">Goblin </option>
+                            <option name="Halfling ">Halfling </option>
+                            <option name="Infernal ">Infernal </option>
+                            <option name="Primordial ">Primordial </option>
+                            <option name="Orc ">Orc </option>
+                            <option name="Sylvan ">Sylvan </option>
+                            <option name="Undercommon ">Undercommon </option>
+                        </select>
+                        <button class="buttonTxt" onclick="ADDLANGUAGES()">ADD</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <ul id="LANGUAGELIST">
+                            <li>Common</li>
+                        </ul>
+                    </th>
+                </tr>
+            </table>
+            <br/>
+            <table>
+                <tr>
+                    <th>
+                        <h1>Feats
+                            <div class="tooltip"><img src="question.png">
+                                <span class="tooltiptext">A feat represents a talent or expertise your character may have.</span>
+                            </div>
+                        </h1>
+                    </th>
+                </tr>
+                <tr>
+                <th>                
+                    <select id="SELECTFEAT">
+                        <option name="actor"         value="Actor ">Actor</option>
+                        <option name="alert"         value="Alert ">Alert</option>
+                        <option name="athlete"       value="Athlete ">Athlete</option>
+                        <option name="charger"       value="Charger ">Charger</option>
+                        <option name="crossbow"      value="Crossbow Expert ">Crossbow Expert</option>
+                        <option name="defensive"     value="Defensive Duelist ">Defensive Duelist</option>
+                        <option name="dWielder"      value="Dual Wielder ">Dual Wielder</option>
+                        <option name="delver"        value="Dungeon Delver ">Dungeon Delver</option>
+                        <option name="durable"       value="Durable ">Durable</option>
+                        <option name="adept"         value="Elemental Adept ">Elemental Adept</option>
+                        <option name="grappler"      value="Grappler ">Grappler</option>
+                        <option name="GWM"           value="Great Weapon Master ">Great Weapon Master</option>
+                        <option name="healer"        value="Healer">Healer </option>
+                        <option name="HA"            value="Heavily Armored ">Heavily Armoured</option>
+                        <option name="HAM"           value="Heavy Armor Master ">Heavy Armor Master</option>
+                        <option name="IL"            value="Inspiring Leader ">Inspiring Leader</option>
+                        <option name="KM"            value="Keen Mind ">Keen Mind</option>
+                        <option name="LA"            value="Lightly Armored ">Lightly Armored</option>
+                        <option name="linguist"      value="Linguist ">Linguist</option>
+                        <option name="lucky"         value="Lucky ">Lucky</option>
+                        <option name="mageS"         value="Mage Slayer ">Mage Slayer</option>
+                        <option name="MI"            value="Magic Initiate ">Magic Initiate</option>
+                        <option name="MA"            value="Martial Adept ">Martial Adept</option>
+                        <option name="MAM"           value="Medium Armor Master ">Medium Armor Master</option>
+                        <option name="mobile"        value="Mobile ">Mobile</option>
+                        <option name="modA"          value="Moderately Armored ">Moderately Armored</option>
+                        <option name="mountedC"      value="Mounted Combantant ">Mounted Combantant</option>
+                        <option name="observant"     value="Observant ">Observant</option>
+                        <option name="polearm"       value="Polearm Master ">Polearm Master</option>
+                        <option name="resilient"     value="Resilient ">Resilient</option>
+                        <option name="ritual"        value="Ritual Caster ">Ritual Caster</option>
+                        <option name="savage"        value="Savage Attacker ">Savage Attacker</option>
+                        <option name="sentinel"      value="Sentinel ">Sentinel</option>
+                        <option name="sharpshooter "  value="Sharpshooter">Sharpshooter</option>
+                        <option name="shieldMaster"  value="Shield Master ">Shield Master</option>
+                        <option name="skilled"       value="Skilled ">Skilled</option>
+                        <option name="skulker"       value="Skulker ">Skulker</option>
+                        <option name="spellSniper"   value="Spell Sniper ">Spell Sniper</option>
+                        <option name="tavernBrawler" value="Tavern Brawler ">Tavern Brawler</option>
+                        <option name="tough"         value="Tough ">Tough</option>
+                        <option name="warCaster"     value="War Caster ">War Caster</option>
+                        <option name="weaponMaster"  value="Weapon Master ">Weapon Master</option>   
+                    </select>
+                    
+                    <button class="buttonTxt" id="ADD" onclick="ADDFEAT()">ADD</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <ul id="FEATLIST">
+                            
+                        </ul>
+                    </th>
+                </tr>
+                
+            </table>
+        </div>
+    </body>
+</html>

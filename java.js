@@ -1,13 +1,11 @@
 function ChangeSTR(){
-    var x = Math.floor((Math.random() * 6) + 1);
-    var y = Math.floor((Math.random() * 6) + 1);
-    var z = Math.floor((Math.random() * 6) + 1);
+    var x = OneDSix();
+    var y = OneDSix();
+    var z = OneDSix();
     
     var raceModOne = 1;
     var raceModTwo = 2;
-    var value;
-    
-    
+    var value;    
     
     var race = document.getElementById("mySelectRace").value;
     if(race == 1 || race == 7 || race == 2)
@@ -28,10 +26,8 @@ function ChangeSTR(){
         mod = document.getElementById("STRMOD").innerHTML = -1;
     else if(mod == 10 || mod == 11)
         mod = document.getElementById("STRMOD").innerHTML = 0;
-    else if(mod == 12 || mod == 13){
+    else if(mod == 12 || mod == 13)
         mod = document.getElementById("STRMOD").innerHTML = 1;
-        mod = document.getElementById("STRMOD1").innerHTML = 1;
-    }
     else if(mod == 14 || mod == 15)
         mod = document.getElementById("STRMOD").innerHTML = 2;
     else if(mod == 16 || mod == 17)
@@ -103,9 +99,9 @@ function STRDOWN(){
 
 
 function ChangeDEX(){
-    var x = Math.floor((Math.random() * 6) + 1);
-    var y = Math.floor((Math.random() * 6) + 1);
-    var z = Math.floor((Math.random() * 6) + 1);
+    var x = OneDSix();
+    var y = OneDSix();
+    var z = OneDSix();
     
     var raceModOne = 1;
     var raceModTwo = 2;
@@ -212,9 +208,9 @@ function DEXDOWN(){
 }
 
 function ChangeCON(){
-    var x = Math.floor((Math.random() * 6) + 1);
-    var y = Math.floor((Math.random() * 6) + 1);
-    var z = Math.floor((Math.random() * 6) + 1);
+    var x = OneDSix();
+    var y = OneDSix();
+    var z = OneDSix();
         
     var raceModOne = 1;
     var raceModTwo = 2;
@@ -310,9 +306,9 @@ function CONDOWN(){
 }
 
 function ChangeINT(){
-    var x = Math.floor((Math.random() * 6) + 1);
-    var y = Math.floor((Math.random() * 6) + 1);
-    var z = Math.floor((Math.random() * 6) + 1);
+    var x = OneDSix();
+    var y = OneDSix();
+    var z = OneDSix();
         
     var raceModOne = 1;
     var raceModTwo = 2;
@@ -420,9 +416,9 @@ function INTDOWN(){
 }
 
 function ChangeWIS(){
-    var x = Math.floor((Math.random() * 6) + 1);
-    var y = Math.floor((Math.random() * 6) + 1);
-    var z = Math.floor((Math.random() * 6) + 1);
+    var x = OneDSix();
+    var y = OneDSix();
+    var z = OneDSix();
     
     var raceModOne = 1;
     var value;
@@ -526,9 +522,9 @@ function WISDOWN(){
 }
 
 function ChangeCHA(){
-    var x = Math.floor((Math.random() * 6) + 1);
-    var y = Math.floor((Math.random() * 6) + 1);
-    var z = Math.floor((Math.random() * 6) + 1);
+    var x = OneDSix();
+    var y = OneDSix();
+    var z = OneDSix();
         
     var raceModOne = 1;
     var raceModTwo = 2;
@@ -631,36 +627,12 @@ function CHADOWN(){
     PERS();
 }
 
-function ChangePT(){
-    var randomNumber = Math.floor((Math.random() * 6) + 1);
+
+function OneDSix(){
+    return Math.floor((Math.random() * 6) + 1);
 }
 
-function SELECTPT(){
-    var x = document.getElementById("mySelectPT");
-    var i = x.selectedIndex;
-    document.getElementById("PTtxt").innerHTML = x.options[i].text;
-}
-
-
-function SELECTIDEAL(){
-    var x = document.getElementById("mySelectIDEAL");
-    var i = x.selectedIndex;
-    document.getElementById("IDEALtxt").innerHTML = x.options[i].text;
-}
-
-function SELECTBOND(){
-    var x = document.getElementById("mySelectBOND");
-    var i = x.selectedIndex;
-    document.getElementById("BONDtxt").innerHTML = x.options[i].text;
-}
-
-function SELECTFLAW(){
-    var x = document.getElementById("mySelectFLAW");
-    var i = x.selectedIndex;
-    document.getElementById("FLAWtxt").innerHTML = x.options[i].text;
-}
-
-function isChecked(){
+function howManySkills(){
     var number = 18;
     var ath = document.getElementById("PROATH").checked;
     var acr = document.getElementById("PROACR").checked;
@@ -688,1333 +660,1405 @@ function isChecked(){
 function SELECTCLASS(){
     var x = document.getElementById("mySelectClass");
     var i = x.selectedIndex;
-    var howMany = isChecked();
+    var howMany = howManySkills();
+    var node;
+    var textnode;
+    
     
     if(i == 0){
+        document.getElementById("hitDieImage").value = 0;
+        document.getElementById("hitDieImage").src = "";
         document.getElementById("SELECTSKILLS").innerHTML = "";
         document.getElementById("ARMORLIST").innerHTML = "";
         document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("hitDieImage").value = 0;
-        document.getElementById("hitDieImage").src = "";    
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
-        document.getElementById("PROFNUM").innerHTML = 0;
                 
     } else if(i == 1){ // Barbarian
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 12;
         document.getElementById("hitDieImage").src = "d12.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Strength");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Strength");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Constitution");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Constitution");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Animal Handling");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Animal Handling");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Atheletics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Atheletics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intimidation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intimidation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Nature");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Nature");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Perception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Perception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Survival");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Survival");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Martial Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Unarmored Defense");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rage");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medium Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Martial Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shields");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Explorer's Pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medium Armor");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shields");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Explorer's Pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("4 Javelins 1d6 Piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("4 Javelins 1d6 Piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("2 Handaxes 1d6 Slashing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("2 Handaxes 1d6 Slashing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);        
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Greataxe 1d12 Slashing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Greataxe 1d12 Slashing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
     } else if(i == 2){ // Bard
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 8;
         document.getElementById("hitDieImage").src = "d8.png";
         document.getElementById("PROFNUM").innerHTML = 3;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dexterity");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dexterity");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Charisma");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Charisma");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Any Three");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Any Three");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("SpellCasting");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Hand Crossbows");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Bardic Inspiration");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Longswords");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Rapiers");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Hand Crossbows");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("ShortSwords");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Longswords");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rapiers");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Choose Three Muscial Instruments");
+        node = document.createElement("li");
+        textnode = document.createTextNode("ShortSwords");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Choose Three Muscial Instruments");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Diplomat's Pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Diplomat's Pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Rapier 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rapier 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dagger 1d4 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dagger 1d4 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Lute");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Lute");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Leather Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Leather Armor");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
         
     } else if(i == 3){ // Cleric
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 8;
         document.getElementById("hitDieImage").src = "d8.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Wisdom");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Wisdom");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Charisma");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Charisma");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
 
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("History");
+        node = document.createElement("li");
+        textnode = document.createTextNode("History");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medicine");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medicine");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Persuasion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Persuasion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Spell Casting");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Divine Domain");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medium Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shields");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Holy Symbol");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medium Armor");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shields");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Holy Symbol");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Mace 1d6 bludgeoning");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Mace 1d6 bludgeoning");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Crossbow 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Crossbow 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("20 crossbow bolts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("20 crossbow bolts");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
     
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Priest's Pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Priest's Pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Scalemail");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Scalemail");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shield");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shield");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
     } else if(i == 4){ // Druid
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 8;
         document.getElementById("hitDieImage").src = "d8.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intelligence");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intelligence");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Wisdom");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Wisdom");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Arcana");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Arcana");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Animal Handling");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Animal Handling");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medicine");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medicine");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Nature");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Nature");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Perception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Perception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Survival");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Survival");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Clubs");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Druidic");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Spellcasting");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Clubs");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
             
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Daggers");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Daggers");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Darts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Darts");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Javelins");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Javelins");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Maces");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Maces");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Quarterstaffs");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Quarterstaffs");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Scimitars");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Scimitars");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Sickles");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Sickles");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Slings");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Slings");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Spears");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Spears");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor* no metal");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor* no metal");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medium Armor* no metal");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medium Armor* no metal");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Sheilds* no metal");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Sheilds* no metal");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Herbalism Kit");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Herbalism Kit");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Explorer's Pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Explorer's Pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Wooden Shield");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Wooden Shield");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("QuarterStaff 1d6 bludgeoning");
+        node = document.createElement("li");
+        textnode = document.createTextNode("QuarterStaff 1d6 bludgeoning");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Leather Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Leather Armor");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
         
     } else if(i == 5){ // Fighter
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 10;
         document.getElementById("hitDieImage").src = "d10.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Strength");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Strength");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Constitution");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Constitution");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Acrobatics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Acrobatics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Animal Handling");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Animal Handling");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Athletics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Athletics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("History");
+        node = document.createElement("li");
+        textnode = document.createTextNode("History");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intimidation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intimidation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Perception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Perception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Survival");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Survival");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Fighting Style");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Martial Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Second Wind");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medium Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Martial Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Heavy Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shields");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medium Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Chainmail");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Heavy Armor");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shields");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Chainmail");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shield");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shield");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Rapier 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rapier 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Crossbow 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Crossbow 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
 
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("20 crossbow bolts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("20 crossbow bolts");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dungeoneer's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dungeoneer's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
     } else if(i == 6){ // Monk
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 8;
         document.getElementById("hitDieImage").src = "d8.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Strength");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Strength");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dexterity");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dexterity");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);        
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Acrobatics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Acrobatics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Athletics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Athletics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("History");
+        node = document.createElement("li");
+        textnode = document.createTextNode("History");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Stealth");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Stealth");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Unarmored Defense");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shortswords");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Martial Arts");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Choose a Muscial Instrument or artisans tool");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shortswords");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Choose a Muscial Instrument or artisans tool");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shortsword 1d6 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shortsword 1d6 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dungeoneer's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dungeoneer's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("10 Darts 1d4 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("10 Darts 1d4 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
     } else if(i == 7){ // Paladin
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 10;
         document.getElementById("hitDieImage").src = "d10.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Wisdom");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Wisdom");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Charisma");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Charisma");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Athletics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Athletics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intimidation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intimidation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medicine");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medicine");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Persuasion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Persuasion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Divine Sense");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medium Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Lay on Hands");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Heavy Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Sheilds");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medium Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Heavy Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Martial Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Sheilds");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Holy Symbol");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Martial Weapons");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Holy Symbol");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Rapier 1d6 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rapier 1d6 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shield");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shield");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("5 Javelins 1d6 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("5 Javelins 1d6 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Priest's Pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Priest's Pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Chain Mail");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Chain Mail");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
     } else if(i == 8){ // Ranger
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 10;
         document.getElementById("hitDieImage").src = "d10.png";
         document.getElementById("PROFNUM").innerHTML = 3;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Strength");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Strength");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dexterity");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dexterity");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Animal Handling");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Animal Handling");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Athletics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Athletics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Investigation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Investigation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Nature");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Nature");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
 
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Perception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Perception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Stealth");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Stealth");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Survival");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Survival");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Favored Enemy");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medium Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Natural Explorer");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shields");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medium Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Martial Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shields");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Quiver");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Martial Weapons");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Quiver");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Leather Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Leather Armor");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Longbow 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Longbow 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dungeoneer's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dungeoneer's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("2 Shortsword 1d6 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("2 Shortsword 1d6 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("20 Arrows");
+        node = document.createElement("li");
+        textnode = document.createTextNode("20 Arrows");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
     } else if(i == 9){ // Rogue
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 8;
         document.getElementById("hitDieImage").src = "d8.png";
         document.getElementById("PROFNUM").innerHTML = 4;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dexterity");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dexterity");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intelligence");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intelligence");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Acrobatics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Acrobatics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Athletics");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Athletics");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Deception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Deception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intimidation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intimidation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Investigation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Investigation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Perception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Perception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Performance");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Performance");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Persuasion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Persuasion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Sleight of Hand");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Sleight of Hand");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Stealth");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Stealth");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Expertise");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Sneak Attack");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-         var node = document.createElement("li");
-        var textnode = document.createTextNode("Hand Crossbows");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Theives' Cant");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Longswords");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Rapiers");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("ShortSwords");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Hand Crossbows");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Thieves' Tools");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Longswords");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Rapier 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rapiers");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("ShortSwords");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Thieves' Tools");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Rapier 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Shortbow 1d6 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Shortbow 1d6 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("20 arrows");
+        node = document.createElement("li");
+        textnode = document.createTextNode("20 arrows");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Burglar's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Burglar's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Leather Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Leather Armor");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("2 Daggers 1d4 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("2 Daggers 1d4 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Thieves' Tools");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Thieves' Tools");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
     } else if(i == 10){ //Sorcerer
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 6;
         document.getElementById("hitDieImage").src = "d6.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
-        
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Constitution");
+                
+        node = document.createElement("li");
+        textnode = document.createTextNode("Constitution");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Charisma");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Charisma");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Arcana");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Arcana");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Deception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Deception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intimidation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intimidation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Persuasion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Persuasion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Daggers");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Spellcasting");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Sorcerous Orgin");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Daggers");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
 
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Darts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Darts");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Slings");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Slings");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Quarterstaffs");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Quarterstaffs");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Crossbows");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Crossbows");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
                        
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Components Pouch");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Components Pouch");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);    
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Crossbow 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Crossbow 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("20 crossbow bolts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("20 crossbow bolts");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dungeoneer's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dungeoneer's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("2 Daggers 1d4 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("2 Daggers 1d4 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
         
     } else if(i == 11){ // Warlock
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 8;
         document.getElementById("hitDieImage").src = "d8.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Wisdom");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Wisdom");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Charisma");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Charisma");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Arcana");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Arcana");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Deception");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Deception");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("History");
+        node = document.createElement("li");
+        textnode = document.createTextNode("History");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intimidation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intimidation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Investigation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Investigation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Nature");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Nature");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Otherwordly Patron");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Simple Weapons");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Pact Magic");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Components Pouch");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Armor");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Simple Weapons");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Components Pouch");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Crossbow 1d8 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Crossbow 1d8 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("20 crossbow bolts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("20 crossbow bolts");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Scholar's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Scholar's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Leather Armor");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Leather Armor");
         node.appendChild(textnode);
         document.getElementById("ARMORLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Quarterstaff 1d6 bludgeoning");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Quarterstaff 1d6 bludgeoning");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("2 Daggers 1d4 piercing");
+        node = document.createElement("li");
+        textnode = document.createTextNode("2 Daggers 1d4 piercing");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
         
     } else if(i == 12){ // Wizard
-        document.getElementById("SELECTSKILLS").innerHTML = "";
-        document.getElementById("ARMORLIST").innerHTML = "";
-        document.getElementById("WEAPONLIST").innerHTML = "";
-        document.getElementById("FEATLIST").innerHTML = "";
-        document.getElementById("TOOLLIST").innerHTML = "";
+        clearLists();
         document.getElementById("hitDieImage").value = 6;
         document.getElementById("hitDieImage").src = "d6.png";
         document.getElementById("PROFNUM").innerHTML = 2;
-        document.getElementById("SAVELIST").innerHTML = "";
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Intelligence");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Intelligence");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Wisdom");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Wisdom");
         node.appendChild(textnode);
         document.getElementById("SAVELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Arcana");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Arcana");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("History");
+        node = document.createElement("li");
+        textnode = document.createTextNode("History");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Insight");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Insight");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Investigation");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Investigation");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Medicine");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Medicine");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Religion");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Religion");
         node.appendChild(textnode);
         document.getElementById("SELECTSKILLS").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Daggers");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Spellcasting");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Arcane Recovery");
+        node.appendChild(textnode);
+        document.getElementById("FEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Daggers");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
 
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Darts");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Darts");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Slings");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Slings");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Quarterstaffs");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Quarterstaffs");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Light Crossbows");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Light Crossbows");
         node.appendChild(textnode);
         document.getElementById("FEATLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Spell Book");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Spell Book");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Quarterstaff 1d6 bludgeoning");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Quarterstaff 1d6 bludgeoning");
         node.appendChild(textnode);
         document.getElementById("WEAPONLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Components Pouch");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Components Pouch");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Scholar's pack");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Scholar's pack");
         node.appendChild(textnode);
         document.getElementById("TOOLLIST").appendChild(node);
         
     }
     HP();   
+}
+
+function clearLists(){
+    document.getElementById("SELECTSKILLS").innerHTML = "";
+    document.getElementById("ARMORLIST").innerHTML = "";
+    document.getElementById("WEAPONLIST").innerHTML = "";
+    document.getElementById("FEATLIST").innerHTML = "";
+    document.getElementById("TOOLLIST").innerHTML = "";
+    document.getElementById("SAVELIST").innerHTML = "";
 }
 
 function HP(){
@@ -2261,13 +2305,14 @@ function UPDATE(){
     PERF();
     PERS();  
     HP();
-    
-
 }
 
 function SELECTRACE(){
     var x = document.getElementById("mySelectRace");
     var i = x.selectedIndex;
+    var node;
+    var textnode;
+    
     // Speeds
     if(i == 0)
         document.getElementById("SPEED").innerHTML = "<br/>" + "0ft";    
@@ -2285,256 +2330,346 @@ function SELECTRACE(){
     7    Half-Orc     2     0     1     0     0     0 
     8    Human        1     1     1     1     1     1 
     9    Tielfling    0     0     0     1     0     2
-    
-    var node = document.createElement("li");
-    var textnode = document.createTextNode("Draconic");
-    node.appendChild(textnode);
-    document.getElementById("LANGUAGELIST").appendChild(node);
-    
     */
     
     if(i == 0){
-        document.getElementById("STRSCORE").innerHTML = 10;
-        document.getElementById("DEXSCORE").innerHTML = 10;
-        document.getElementById("CONSCORE").innerHTML = 10;
-        document.getElementById("INTSCORE").innerHTML = 10;
-        document.getElementById("WISSCORE").innerHTML = 10;
-        document.getElementById("CHASCORE").innerHTML = 10;
-
-        document.getElementById("STRMOD").innerHTML = 0;    
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;          
-        
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
     }else if(i == 1){ // DragonBorn
-       document.getElementById("STRSCORE").innerHTML = 12;
-        document.getElementById("DEXSCORE").innerHTML = 10;
-        document.getElementById("CONSCORE").innerHTML = 10;
-        document.getElementById("INTSCORE").innerHTML = 10;
-        document.getElementById("WISSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
+        document.getElementById("STRSCORE").innerHTML = 12;
         document.getElementById("CHASCORE").innerHTML = 11;
         document.getElementById("STRMOD").innerHTML = 1;
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Draconic");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Draconic");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Draconic Ancestry");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+
+        node = document.createElement("li");
+        textnode = document.createTextNode("Breath Weapon");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Damage Resistance");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
         
     }else if(i == 2){ // Dwarf
-        document.getElementById("STRSCORE").innerHTML = 10;
-        document.getElementById("DEXSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("CONSCORE").innerHTML = 12;
-        document.getElementById("INTSCORE").innerHTML = 10;
         document.getElementById("WISSCORE").innerHTML = 11;
-        document.getElementById("CHASCORE").innerHTML = 10;
-        document.getElementById("STRMOD").innerHTML = 0;
-        document.getElementById("DEXMOD").innerHTML = 0;
         document.getElementById("CONMOD").innerHTML = 1;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Dwarvish");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dwarvish");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dark Vision");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dwarven Resilience");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Stonecunning");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dwarven Combat Training");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Tool Proficiency");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Smith's Tools");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
         
     } else if(i == 3){ //Elf
-        document.getElementById("STRSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("DEXSCORE").innerHTML = 12;
-        document.getElementById("CONSCORE").innerHTML = 10;
         document.getElementById("INTSCORE").innerHTML = 11;
-        document.getElementById("WISSCORE").innerHTML = 10;
-        document.getElementById("CHASCORE").innerHTML = 10;
-        document.getElementById("STRMOD").innerHTML = 0;
         document.getElementById("DEXMOD").innerHTML = 1;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dark Vision");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Keen Sense");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        // Check Perception
+        document.getElementById("PROPER").checked = true;
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Fey Ancestry");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Trance");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);    
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Elvish");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Elvish");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
     } else if(i == 4){ // Gnome
-        document.getElementById("STRSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("DEXSCORE").innerHTML = 11;
-        document.getElementById("CONSCORE").innerHTML = 10;
         document.getElementById("INTSCORE").innerHTML = 12;
-        document.getElementById("WISSCORE").innerHTML = 10;
-        document.getElementById("CHASCORE").innerHTML = 10;
-        document.getElementById("STRMOD").innerHTML = 0;
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
         document.getElementById("INTMOD").innerHTML = 1;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Gnomish");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Gnomish");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dark Vision");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Gnome Cunning");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+
     } else if(i == 5){ // Half Elf
-        document.getElementById("STRSCORE").innerHTML = 10;
-        document.getElementById("DEXSCORE").innerHTML = 10;
-        document.getElementById("CONSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("INTSCORE").innerHTML = 11;
-        document.getElementById("WISSCORE").innerHTML = 10;
         document.getElementById("CHASCORE").innerHTML = 12;
-        document.getElementById("STRMOD").innerHTML = 0;
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
         document.getElementById("CHAMOD").innerHTML = 1;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Elvish");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Elvish");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dark Vision");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Fey Ancestry");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Skilled Versatility");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
         
     } else if(i == 6){ // Halfling
-       document.getElementById("STRSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("DEXSCORE").innerHTML = 12;
-        document.getElementById("CONSCORE").innerHTML = 10;
-        document.getElementById("INTSCORE").innerHTML = 10;
-        document.getElementById("WISSCORE").innerHTML = 10;
         document.getElementById("CHASCORE").innerHTML = 11;
-        document.getElementById("STRMOD").innerHTML = 0;
         document.getElementById("DEXMOD").innerHTML = 1;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
 
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Halfling");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Halfling");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Lucky");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Brave");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+            
+        node = document.createElement("li");
+        textnode = document.createTextNode("Halfling Nimbleness");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
         
     } else if(i == 7){ // Half Orc
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("STRSCORE").innerHTML = 12;
-        document.getElementById("DEXSCORE").innerHTML = 10;
         document.getElementById("CONSCORE").innerHTML = 11;
-        document.getElementById("INTSCORE").innerHTML = 10;
-        document.getElementById("WISSCORE").innerHTML = 10;
-        document.getElementById("CHASCORE").innerHTML = 10;
         document.getElementById("STRMOD").innerHTML = 1;
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Orc");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Orc");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dark Vision");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Menacing");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        // Gain proficiency in intimidation
+        document.getElementById("PROINTI").checked = true;
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Relentless Endurance");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Savage Attacks");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
         
     } else if(i == 8){ // Human
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("STRSCORE").innerHTML = 11;
         document.getElementById("DEXSCORE").innerHTML = 11;
         document.getElementById("CONSCORE").innerHTML = 11;
         document.getElementById("INTSCORE").innerHTML = 11;
         document.getElementById("WISSCORE").innerHTML = 11;
         document.getElementById("CHASCORE").innerHTML = 11;
-        document.getElementById("STRMOD").innerHTML = 0;
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
-        document.getElementById("CHAMOD").innerHTML = 0;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
                 
     }else if(i == 9){ // Tiefling
-        document.getElementById("STRSCORE").innerHTML = 10;
-        document.getElementById("DEXSCORE").innerHTML = 10;
-        document.getElementById("CONSCORE").innerHTML = 10;
+        clearAbilities();
+        clearRaceFeats();
         document.getElementById("INTSCORE").innerHTML = 11;
-        document.getElementById("WISSCORE").innerHTML = 10;
         document.getElementById("CHASCORE").innerHTML = 12;
-        document.getElementById("STRMOD").innerHTML = 0;
-        document.getElementById("DEXMOD").innerHTML = 0;
-        document.getElementById("CONMOD").innerHTML = 0;
-        document.getElementById("INTMOD").innerHTML = 0;
-        document.getElementById("WISMOD").innerHTML = 0;
         document.getElementById("CHAMOD").innerHTML = 1;
         
         document.getElementById("LANGUAGELIST").innerHTML = "";
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Common");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Common");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
         
-        var node = document.createElement("li");
-        var textnode = document.createTextNode("Infernal");
+        node = document.createElement("li");
+        textnode = document.createTextNode("Infernal");
         node.appendChild(textnode);
         document.getElementById("LANGUAGELIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Dark Vision");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Hellish Resistance");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
+        
+        node = document.createElement("li");
+        textnode = document.createTextNode("Infernal Legacy");
+        node.appendChild(textnode);
+        document.getElementById("RACEFEATLIST").appendChild(node);
         
     }
+}
+
+function clearAbilities(){
+    document.getElementById("STRSCORE").innerHTML = 10;
+    document.getElementById("DEXSCORE").innerHTML = 10;
+    document.getElementById("CONSCORE").innerHTML = 10;
+    document.getElementById("INTSCORE").innerHTML = 10;
+    document.getElementById("WISSCORE").innerHTML = 10;
+    document.getElementById("CHASCORE").innerHTML = 10;
+    
+    document.getElementById("STRMOD").innerHTML = 0;    
+    document.getElementById("DEXMOD").innerHTML = 0;
+    document.getElementById("CONMOD").innerHTML = 0;
+    document.getElementById("INTMOD").innerHTML = 0;
+    document.getElementById("WISMOD").innerHTML = 0;
+    document.getElementById("CHAMOD").innerHTML = 0;       
+}
+
+function clearRaceFeats(){
+    document.getElementById("RACEFEATLIST").innerHTML = "";
+    document.getElementById("PROPER").checked = false;
 }
 
 function ADDFEAT(){
@@ -2544,6 +2679,10 @@ function ADDFEAT(){
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(value));
     var button = document.createElement("button");
+    
+    var i = 1;
+    var id = "var" + i;
+    i++;
     
     button.innerHTML = "REMOVE";
     button.style.background = "Red";
@@ -2594,54 +2733,54 @@ function SELECTARMOR(){
     
     if(i == 0){
         document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 10);
-    }else if(i == 1){
+    }else if(i == 1){ // padded
         document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 11);
-    }else if(i == 2){
+    }else if(i == 2){ // leather
         document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 11);
-    }else if(i == 3){
+    }else if(i == 3){ // studded
         document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 12);
-    }else if(i == 4){
+    }else if(i == 4){ // hide
         if(DEX > 3){
             DEX = 2;
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 12);
         } else{
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 12);
         }
-    }else if(i == 5){
+    }else if(i == 5){ // chain
         if(DEX > 3){
             DEX = 2;
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 13);
         } else{
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 13);
         }
-    }else if(i == 6){
+    }else if(i == 6){ // scale
         if(DEX > 3){
             DEX = 2;
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 14);
         } else{
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 14);
         }
-    }else if(i == 7){
+    }else if(i == 7){ // breastplate
         if(DEX > 3){
             DEX = 2;
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 14);
         } else{
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 14);
         }
-    }else if(i == 8){
+    }else if(i == 8){ // half plate
         if(DEX > 3){
             DEX = 2;
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 15);
         } else{
             document.getElementById("AC").innerHTML = "<br/>" + (- -DEX + 15);
         }
-    }else if(i == 9){
+    }else if(i == 9){ // ring mail
         document.getElementById("AC").innerHTML = "<br/>" + 14;
-    }else if(i == 10){
+    }else if(i == 10){ // chain mail
         document.getElementById("AC").innerHTML = "<br/>" + 16;
-    }else if(i == 11){
+    }else if(i == 11){ // splint
         document.getElementById("AC").innerHTML = "<br/>" + 17;
-    }else if(i == 12){
+    }else if(i == 12){ // full plate
         document.getElementById("AC").innerHTML = "<br/>" + 18;
     }
 }

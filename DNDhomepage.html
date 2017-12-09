@@ -7,11 +7,11 @@
     </head>
     <body>
         <div id="h1Title">
-            <h1 class="h1Title">Dungeon and Dragons <br/>5th Edition Character Generator</h1>
+            <h1 class="h1Title"><img class="Title" src="Title.jpg"><br/>5th Edition Character Generator</h1>
         </div>
         <div class="names">
             <h2>Name <input type="text">
-                <div class="tooltip"><img src="question.png">
+                <div class="tooltip"><img src="question.png" class="questionMark">
                     <span class="tooltiptext">Give your character a name.</span>
                 </div>
                 Race 
@@ -27,7 +27,7 @@
                     <option name="human"       value="8">Human</option>
                     <option name="Tiefling"    value="9">Tiefling</option> 
                 </select>
-                <div class="tooltip"><img src="question.png">
+                <div class="tooltip"><img src="question.png" class="questionMark">
                     <span class="tooltiptext">Certain Races have advantages over others, they determine your speed, and certain modifiers you gain on your abilities as well as languages.</span>
                 </div>  
                 Class 
@@ -46,7 +46,7 @@
                     <option name="warlock"   value="warlock">Warlock</option>
                     <option name="wizard"    value="wizard">Wizard</option>
                 </select>
-                <div class="tooltip"><img src="question.png">
+                <div class="tooltip"><img src="question.png" class="questionMark">
                     <span class="tooltiptext">Certain classes have advantages over others, they determine your hit die, your feats, and your proficiencies in certain skills.</span>
                 </div>  
                 Level
@@ -72,7 +72,7 @@
                     <option value="19">19</option>
                     <option value="20">20</option>                    
                 </select>
-                <div class="tooltip"><img src="question.png">
+                <div class="tooltip"><img src="question.png" class="questionMark">
                     <span class="tooltiptext">Your level is a representation of how much experience your character has.</span>
                 </div>  
                 Alignment 
@@ -87,18 +87,18 @@
                     <option name="cn" value="cn">Chaotic Neutral</option>
                     <option name="ce" value="ce">Chaotic Evil</option>
                 </select>
-                <div class="tooltip"><img src="question.png">
+                <div class="tooltip"><img src="question.png" class="questionMark">
                     <span class="tooltiptext">Your character's alignment is a representation of how good / evil your character is, as well as how lawful / chaotic they are.</span>
                 </div>  
                   
             </h2>
         </div>        
-        <div id="Abilities" class="column">
+        <div id="Abilities" class="columnA">
             <table>
                 <th>
                     <h1>Abilities              
                         <div class="tooltip">
-                            <img src="question.png">
+                            <img src="question.png" class="questionMark">
                             <span class="tooltiptext">Your abilities represent how effective your character is in certain things.</span>
                         </div>
                     </h1>
@@ -110,98 +110,97 @@
                     <th>Dice</th>
                     <th>Type</th>
                     <th>Score</th>
-                    <th></th>
                     <th>Mod</th>
                     <th>Help</th>
                 </tr>
                 <tr>
                     <td><button onclick="ChangeSTR()"><img src="diceIcon.png"></button></td>
-                    <td><p>Strength<br/>STR</p></td>
-                    <td>    
-                        <p id="STRSCORE">10</p>
-                    </td>
+                    <td><h3>Strength<br/>STR</h3></td>
                     <td>    
                         <button onclick="STRUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
-                        <button onclick="STRDOWN()"><img class="arrow" src="redArrow.png"></button></td>
+                        <p id="STRSCORE">10</p>                        
+                        <button onclick="STRDOWN()"><img class="arrow" src="redArrow.png"></button>
                     
                     <td><h2 id="STRMOD">0</h2></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Strength is a measure of how much a character can pick up, how hard they can hit something with a weapon, how fast they may climb up a rope, or how far they may jump or throw something.</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td><button onclick="ChangeDEX()"><img src="diceIcon.png"></button></td>
-                    <td><p>Dexterity<br/>DEX</p></td>
-                    <td><p id="DEXSCORE">10</p></td>
+                    <td><h3>Dexterity<br/>DEX</h3></td>
                     <td>
                         <button onclick="DEXUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <p id="DEXSCORE">10</p>                        
                         <button onclick="DEXDOWN()"><img class="arrow" src="redArrow.png"></button>
                     </td>
                     <td><h2 id="DEXMOD">0</h2></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Dexterity is a measure of how much finesse a character may have. How well they can perform a sleight of hand trick, how well they can sneak by others, and how well they may be able to hit a target from a distance.</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td><button onclick="ChangeCON()"><img src="diceIcon.png"></button></td>
-                    <td><p>Constition<br/>CON</p></td>
-                    <td><p id="CONSCORE">10</p></td>
+                    <td><h3>Constition<br/>CON</h3></td>
                     <td>
                         <button onclick="CONUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
-                        <button onclick="CONDOWN()"><img class="arrow" src="redArrow.png"></button>
+                        <p id="CONSCORE">10</p>                                           <button onclick="CONDOWN()"><img class="arrow" src="redArrow.png"></button>
                     </td>
                     <td><h2 id="CONMOD">0</h2></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Constitution is a measure of how much your character can endure before breaking.  This effect how much hit points your character has before dying, and how long can your character run without fatigue.</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td><button onclick="ChangeINT()"><img src="diceIcon.png"></button></td>
-                    <td><p>Intelligence<br/>INT</p></td>
-                    <td><p id="INTSCORE">10</p></td>
+                    <td><h3>Intelligence<br/>INT</h3></td>
                     <td>
                         <button onclick="INTUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <p id="INTSCORE">10</p>
+
                         <button onclick="INTDOWN()"><img class="arrow" src="redArrow.png"></button>
                     </td>
                     <td><h2 id="INTMOD">0</h2></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Intelligence is a measure of how book smart your character may be.  Usually recalling information from a book they read as a child or knowing what type of artifact they may have stumbled upon, or knowing if there is a trick to getting by something obstructing their way.</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td><button onclick="ChangeWIS()"><img src="diceIcon.png"></button></td>
-                    <td><p>Wisdom<br/>WIS</p></td>
-                    <td><p id="WISSCORE">10</p></td>
+                    <td><h3>Wisdom<br/>WIS</h3></td>
                     <td>
                         <button onclick="WISUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <p id="WISSCORE">10</p>
+                        
                         <button onclick="WISDOWN()"><img class="arrow" src="redArrow.png"></button>
                     </td>
                     <td><h2 id="WISMOD">0</h2></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Wisdom is a measure of how street smart your character may be.  This generally deal how well you can interact with animals, or knowing if a mushroom is poisonous or not, or being aware of your surroundings.</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td><button onclick="ChangeCHA()"><img src="diceIcon.png"></button></td>
-                    <td><p>Charisma<br/>CHA</p></td>
-                    <td><p id="CHASCORE">10</p></td>
+                    <td><h3>Charisma<br/>CHA</h3></td>
                     <td>
                         <button onclick="CHAUP()"><img class="arrow" src="greenArrow.jpg"></button><br/>
+                        <p id="CHASCORE">10</p>
+                        
                         <button onclick="CHADOWN()"><img class="arrow" src="redArrow.png"></button>
                     </td>
                     <td><h2 id="CHAMOD">0</h2></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Charisma is a measure of how influential your character may be.  This generally deals with how well you may be able to lie to someone and they believe it as well as disguise yourself as someone else.</span>
                         </div>
                     </td>
@@ -211,7 +210,7 @@
             <table>
                 <th>
                     <h1>Skills
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Skills are a representation on how well your characte can perform a certain task like swimming, lying, jumping, ect... The higher your skill the better you can perform these actions.  They are based off of your modifiers and if your proficient in that skill or not.</span>
                         </div>
                     </h1>
@@ -221,8 +220,8 @@
                 <tr>
                     <td>
                         <h2>Choose <i class="bigger" id="PROFNUM">2</i> Proficiencies
-                            <div class="tooltip"><img src="question.png">
-                                <span class="tooltiptext">Depending on your class you get to choose from certain skill proficiencies that give you an advantage when performing them</span>
+                            <div class="tooltip"><img src="question.png" class="questionMark">
+                                <span class="tooltiptext">Depending on your class you get to choose from certain skill proficiencies that give you an advantage when performing them.  Determined by your class.</span>
                             </div>
                         </h2>
                     </td>
@@ -258,7 +257,7 @@
                         <p>Athletics</p>
                     </td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can jump, climb, or swim.</span>
                         </div>
                     </td>
@@ -274,7 +273,7 @@
                     <td><p id="ACRMOD">0</p></td>
                     <td><p>Acrobatics</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can balance, tumble, or flip.</span>
                         </div>
                     </td>
@@ -284,7 +283,7 @@
                     <td><p id="SOHMOD">0</p></td>
                     <td><p>Sleight of Hand</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can steal items, conceal items, or trick others.</span>
                         </div>
                     </td>
@@ -294,7 +293,7 @@
                     <td><p id="STEMOD">0</p></td>
                     <td><p>Stealth</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can hide, move silently, or not be perceived by others.</span>
                         </div>
                     </td>
@@ -310,7 +309,7 @@
                     <td><p id="ARCMOD">0</p></td>
                     <td><p>Arcana</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well your can identify spells, or know magical properties in an item.</span>
                         </div>
                     </td>
@@ -320,7 +319,7 @@
                     <td><p id="HISMOD">0</p></td>
                     <td><p>History</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can remember ancient lore about items, places, or families. </span>
                         </div>
                     </td>
@@ -330,7 +329,7 @@
                     <td><p id="INVMOD">0</p></td>
                     <td><p>Investigation</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can find clues and determine motives</span>
                         </div>
                     </td>
@@ -340,7 +339,7 @@
                     <td><p id="NATMOD">0</p></td>
                     <td><p>Nature</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can tell the natural about beasts, plants, or environments.</span>
                         </div>
                     </td>
@@ -350,7 +349,7 @@
                     <td><p id="RELMOD">0</p></td>
                     <td><p>Religion</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can identify religions, know rituals, know offensives to a cult.</span>
                         </div>
                     </td>
@@ -366,7 +365,7 @@
                     <td><p id="ANHMOD">0</p></td>
                     <td><p>Animal Handling</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can tame, calm, or ride an animal.</span>
                         </div>
                     </td>
@@ -376,7 +375,7 @@
                     <td><p id="INSMOD">0</p></td>
                     <td><p>Insight</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can detect lies and sense motives.</span>
                         </div>
                     </td>
@@ -386,7 +385,7 @@
                     <td><p id="MEDMOD">0</p></td>
                     <td><p>Medicine</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can perform medicinal help to those in need; bandaging, nursing, or CPR.</span>
                         </div>
                     </td>
@@ -396,7 +395,7 @@
                     <td><p id="PERMOD">0</p></td>
                     <td><p>Perception</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can see hidden doors, traps, or enemies. Also how well you can hear noises.</span>
                         </div>
                     </td>
@@ -406,7 +405,7 @@
                     <td><p id="SURMOD">0</p></td>
                     <td><p>Survival</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can forage for food, make a fire, craft makeshift weapons.</span>
                         </div>
                     </td>
@@ -422,7 +421,7 @@
                     <td><p id="DECMOD">0</p></td>
                     <td><p>Deception</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">This is a measure of how well your character can lie, fake crying, disguise emotions, and impersonate others.</span>
                         </div>
                     </td>
@@ -432,7 +431,7 @@
                     <td><p id="INTIMOD">0</p></td>
                     <td><p>Intimidation</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">This is a measure of how well your character can torture someone, scaring others, or taunting someone to violence.</span>
                         </div>
                     </td>
@@ -442,7 +441,7 @@
                     <td><p id="PERFMOD">0</p></td>
                     <td><p>Performance</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can perform an act, play an instrument, amuse a crowd.</span>
                         </div>
                     </td>
@@ -452,7 +451,7 @@
                     <td><p id="PERSMOD">0</p></td>
                     <td><p>Persuasion</p></td>
                     <td>
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">How well you can convince others to work for you, lower hostilities, make friends.</span>
                         </div>
                     </td>
@@ -464,7 +463,7 @@
                 <th>
                     <h1>Stats              
                         <div class="tooltip">
-                            <img src="question.png">
+                            <img src="question.png" class="questionMark">
                             <span class="tooltiptext">Your stats represent what kind of character your playing; quick or slow, hearty or frail, tanky or vulnerable</span>
                         </div>
                     </h1>
@@ -474,7 +473,7 @@
                     <tr>
                         <td>
                             <h2>AC
-                                <div class="tooltip"><img src="question.png">
+                                <div class="tooltip"><img src="question.png" class="questionMark">
                                     <span class="tooltiptext">Armor Class, how hard it is to hit your character. Determined by the armor you are wearing, and the dex modifier your character has. Certain armors do not use your dex mod.</span>
                                 </div>
                             </h2>
@@ -482,7 +481,7 @@
                         </td>
                         <td>
                             <h2>HP
-                                <div class="tooltip"><img src="question.png">
+                                <div class="tooltip"><img src="question.png" class="questionMark">
                                     <span class="tooltiptext">Hit Points, how much damage your character can take before dying.  This is determined by level, hit die, and CON Modifier.</span>
                                 </div>
                             </h2>
@@ -490,7 +489,7 @@
                         </td>
                         <td>
                             <h2>Speed
-                                <div class="tooltip"><img src="question.png">
+                                <div class="tooltip"><img src="question.png" class="questionMark">
                                     <span class="tooltiptext">How fast your character can move in an standard action.  This is determined by your race.</span>
                                 </div>
                             </h2>
@@ -501,17 +500,17 @@
             <table>
                 <tr>
                     <td>
-                        <h2>Initiative
-                            <div class="tooltip"><img src="question.png">
+                        <h2>Initiative 
+                            <div class="tooltip"><img src="question.png" class="questionMark">
                                 <span class="tooltiptext">How quickly your character reacts, determines turn order, based off of your DEX modifier.</span>
                             </div>
                         </h2>
                         <h2 class="imagerE" id="INI" style="background-image:url('ini.png')"><br/>0</h2>
                     </td>
                     <td>
-                        <h2>Hit Die
-                            <div class="tooltip"><img src="question.png">
-                                <span class="tooltiptext">The amount of health your character gains per level  + CON mod.</span>
+                        <h2>Hit Die 
+                            <div class="tooltip"><img src="question.png" class="questionMark">
+                                <span class="tooltiptext">The amount of health your character gains per level  + CON mod.  Determined by the class that you are.</span>
                             </div>
                         </h2>
                         <img class="imagerD" id="hitDieImage">
@@ -522,8 +521,8 @@
                 <tr>
                     <th>
                         <h2>Proficiency Bonus
-                            <div class="tooltip"><img src="question.png">
-                                <span class="tooltiptext">Your proficiency bonus is determined by your level.  You add this bonus to your skill rolls to which you are proficient in.</span>
+                            <div class="tooltip"><img src="question.png" class="questionMark">
+                                <span class="tooltiptext">Your proficiency bonus is determined by your level.  You add this bonus to your skill rolls to which you are proficient in. Determined by what level you are.</span>
                             </div>
                         </h2>
                         <h2 id="bonus">2</h2>
@@ -535,8 +534,8 @@
             <table>
                 <tr>
                     <th>
-                        <h2>Saving Throws <div class="tooltip"><img src="question.png">
-                                <span class="tooltiptext">Your proficiency bonus is determined by your level.  You add this bonus to your skill rolls to which you are proficient in.  As well as your saving throws to which your character’s class determines for you.</span>
+                        <h2>Saving Throws <div class="tooltip"><img src="question.png" class="questionMark">
+                                <span class="tooltiptext">Your proficiency bonus is determined by your level.  You add this bonus to your skill rolls to which you are proficient in.  Determined by your class</span>
                             </div></h2>
                     </th>
                 </tr>
@@ -551,7 +550,7 @@
             <table>
                 <th>
                     <h1>Equipment
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">What tools, weapons, armor, money, and other treasures your character may have on him when starting out.</span>
                         </div>
                     </h1>
@@ -560,7 +559,7 @@
             <table>
                 <th>
                     <h2>Weapon
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">
                                 Simple Weapons:<br/> Club-Sling<br/>
                                 Martial Weapons:<br/> Battleaxe-Net<br/>
@@ -624,7 +623,7 @@
                 <th>
                     <h2>Armor
                         <div class="tooltip">
-                            <img src="question.png">
+                            <img src="question.png" class="questionMark">
                             <span class="tooltiptext">You should choose Light armor (Padded, Leather, or Studded) if you have high Dexterity.  Medium Armor (Hide, Chain, Scale, Breastplate, or half plate) if you have average Dexterity. Heavy Armor (Ring, Chain, Splint, Plate) if your Dexterity is less than 10.</span>
                         </div>
                     </h2>
@@ -660,7 +659,7 @@
                     <th>
                         <h2>Money
                         <div class="tooltip">
-                            <img src="question.png">
+                            <img src="question.png" class="questionMark">
                             <span class="tooltiptext">1 Platinum coin is worth 10 gold, or 100 silver, or 1000 copper.<br/>You should be able to stay at a poor inn for 1 silver piece.</span>
                             </div>
                         </h2>
@@ -684,7 +683,7 @@
                     <th>
                         <h2>Tools
                             <div class="tooltip">
-                                <img src="question.png">
+                                <img src="question.png" class="questionMark">
                                 <span class="tooltiptext">Any type of item your class would carry, such as lock picks, books, ink, ect...</span>
                             </div>
                         </h2>
@@ -706,7 +705,7 @@
                     <th>
                         <h2>Other Treasure
                             <div class="tooltip">
-                                <img src="question.png">
+                                <img src="question.png" class="questionMark">
                                 <span class="tooltiptext">Any other items you may be carrying.  This would include Rare stones, magic items, mounts, ect...</span>
                             </div>
                         </h2>
@@ -724,7 +723,7 @@
             <table>
                 <th>
                     <h1>Background
-                        <div class="tooltip"><img src="question.png">
+                        <div class="tooltip"><img src="question.png" class="questionMark">
                             <span class="tooltiptext">Your character's background is a representation of what your character has done with their life so far.</span>
                         </div>
                     </h1>
@@ -769,7 +768,7 @@
                     <th>
                         Personality Trait
                         <div class="tooltip">
-                            <img src="question.png">
+                            <img src="question.png" class="questionMark">
                             <span class="tooltiptext">Something interesting about your character, Things you like, dislike, fears, mannerisms, or past accomplishments.</span>
                         </div>
                     </th>
@@ -783,7 +782,7 @@
                     <th>
                         Ideals
                         <div class="tooltip">
-                            <img src="question.png">
+                            <img src="question.png" class="questionMark">
                             <span class="tooltiptext">Something your character believes in fully, or will always do to protect their belief.</span>
                         </div>
                     </th>
@@ -799,7 +798,7 @@
                 <tr>                        
                     <th>
                         Bonds<div class="tooltip">
-                        <img src="question.png">
+                        <img src="question.png" class="questionMark">
                         <span class="tooltiptext">Your connection to people, places, or things</span>
                         </div>
                     </th>
@@ -812,7 +811,7 @@
                 <tr>                        
                     <th>
                         Flaws<div class="tooltip">
-                        <img src="question.png">
+                        <img src="question.png" class="questionMark">
                         <span class="tooltiptext">Some Vice, or compulsion your character has.</span>
                         </div>
                     </th>
@@ -828,7 +827,7 @@
                 <tr>
                     <th>
                         <h1>Languages
-                            <div class="tooltip"><img src="question.png">
+                            <div class="tooltip"><img src="question.png" class="questionMark">
                                 <span class="tooltiptext">Languages your character knows how to speak, read, and write.</span>
                             </div>
                         </h1>
@@ -870,7 +869,7 @@
                 <tr>
                     <th>
                         <h1>Feats
-                            <div class="tooltip"><img src="question.png">
+                            <div class="tooltip"><img src="question.png" class="questionMark">
                                 <span class="tooltiptext">A feat represents a talent or expertise your character may have.</span>
                             </div>
                         </h1>

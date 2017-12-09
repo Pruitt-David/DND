@@ -106,7 +106,7 @@ h3{
 table{
     text-align: center;
     width: 99%;
-    border: 5px solid grey;
+    border: 2px solid grey;
 }
 
 .box{
@@ -162,6 +162,11 @@ th{
     border-bottom: 1px dotted black;
 }
 
+.questionMark{
+    width: 25px;
+    height: auto;
+}
+
 select{
     font-size: 24px;
     size: 24px;
@@ -195,7 +200,14 @@ textarea{
     background-color: black;
     height: auto;
     font-size: 16px;
-   
+}
+
+
+
+
+.Title{
+    width: 40%;
+    height: auto;
 }
 
 .choosePROF{
@@ -219,7 +231,13 @@ textarea{
 
 .column{
     float: left;
-    width: 33.33%;
+    width: 31.2%;
+    padding: 10px;
+}
+
+.columnA{
+    float: left;
+    width: 37.33%;
     padding: 10px;
 }
 
